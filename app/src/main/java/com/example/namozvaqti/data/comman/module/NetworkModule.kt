@@ -1,5 +1,6 @@
 package com.example.namozvaqti.data.comman.module
 
+import com.example.namozvaqti.BuildConfig
 import com.example.namozvaqti.data.comman.RequestInterceptor
 import com.example.namozvaqti.utils.Constants
 import com.example.namozvaqti.utils.SharedPref
@@ -42,6 +43,9 @@ object NetworkModule {
             readTimeout(30, TimeUnit.SECONDS)
             writeTimeout(30, TimeUnit.SECONDS)
             addInterceptor(requestInterceptor)
+            if (BuildConfig.DEBUG) {
+                addInterceptor(httpLoggingInterceptor)
+            }
         }
         try {
             val trustAllCerts = arrayOf<TrustManager>(object : X509TrustManager {

@@ -6,6 +6,5 @@ class PrayerTimeUseCase @Inject constructor(
     private val prayerTimeRepository: PrayerTimeRepository
 ) {
 
-    suspend fun prayerTime() =
-        prayerTimeRepository.prayerTime()
+    suspend fun prayerTime() = prayerTimeRepository.prayerTime()
 }

@@ -19,10 +19,16 @@ class SharedPref constructor(context: Context) {
             if (value != null) it.putString("city", value)
         }
 
-    var country: String?
-        get() = preferences.getString("country", "Uzbekistan")
+    var longitude: String?
+        get() = preferences.getString("longitude", "69.2797")
         set(value) = preferences.edit {
-            if (value != null) it.putString("country", value)
+            if (value != null) it.putString("longitude", value)
+        }
+
+    var latitude: String?
+        get() = preferences.getString("latitude", "41.3111")
+        set(value) = preferences.edit {
+            if (value != null) it.putString("latitude", value)
         }
 
 

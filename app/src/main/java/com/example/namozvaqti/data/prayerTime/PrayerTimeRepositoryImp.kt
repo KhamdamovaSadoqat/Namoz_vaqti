@@ -16,7 +16,7 @@ class PrayerTimeRepositoryImp @Inject constructor(
     private val prayerTimeApi: PrayerTimeApi,
 ) : PrayerTimeRepository {
     override suspend fun prayerTime(): Flow<BaseResult<PrayerTimeEntity, WrappedResponse<PrayerTimeResponse>>> {
-        val response = prayerTimeApi.prayerTime(shared.city!!, shared.country!!, 0, 1)
+        val response = prayerTimeApi.prayerTime(shared.latitude!!, shared.longitude!!)
         return flow {
             if (response.isSuccessful) {
                 val body = response.body()!!

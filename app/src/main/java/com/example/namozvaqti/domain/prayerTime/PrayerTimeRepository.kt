@@ -6,6 +6,5 @@ import com.example.namozvaqti.domain.base.BaseResult
 import kotlinx.coroutines.flow.Flow
 
 interface PrayerTimeRepository {
-
     suspend fun prayerTime(): Flow<BaseResult<PrayerTimeEntity, WrappedResponse<PrayerTimeResponse>>>
 }

@@ -3,4 +3,17 @@
     <string name="title_home">Namoz vaqti</string>
     <string name="title_dashboard">Dashboard</string>
     <string name="title_notifications">Notifications</string>
+
+    <string name="choose_city">Yashash shahringizni tanlang</string>
+    <string name="next">Keyingisi</string>
+    <string name="submit">Tasdiqlash</string>
+
+
+    <string name="fajr">Bomdod</string>
+    <string name="sunrise">Quyosh chiqishi</string>
+    <string name="dhuhr">Peshin</string>
+    <string name="asr">Asr</string>
+    <string name="maghrib">Shom</string>
+    <string name="isha">Xufton</string>
+
 </resources>

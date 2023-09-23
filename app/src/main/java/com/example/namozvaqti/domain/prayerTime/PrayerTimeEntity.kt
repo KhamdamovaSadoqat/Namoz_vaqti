@@ -1,15 +1,16 @@
 package com.example.namozvaqti.domain.prayerTime
 
+
 data class PrayerTimeEntity (
     val fajr: String,
-    val Sunrise: String,
-    val Dhuhr: String,
-    val Asr: String,
-    val Sunset: String,
-    val Maghrib: String,
-    val Isha: String,
-    val Imsak: String,
-    val Midnight: String,
-    val Firstthird: String,
-    val Lastthird: String
+    val sunrise: String,
+    val dhuhr: String,
+    val asr: String,
+    val sunset: String,
+    val maghrib: String,
+    val isha: String,
+    val imsak: String,
+    val midnight: String,
+    val firstthird: String,
+    val lastthird: String
     )

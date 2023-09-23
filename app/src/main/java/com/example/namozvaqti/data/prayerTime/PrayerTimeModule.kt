@@ -1,6 +1,7 @@
 package com.example.namozvaqti.data.prayerTime
 
 import com.example.namozvaqti.data.comman.module.NetworkModule
+import com.example.namozvaqti.domain.prayerTime.PrayerTimeRepository
 import com.example.namozvaqti.utils.SharedPref
 import dagger.Module
 import dagger.Provides
@@ -21,7 +22,7 @@ class PrayerTimeModule {
 
         @Singleton
         @Provides
-        fun provideLoginRepository(prayerTime: PrayerTimeApi, pref: SharedPref): PrayerTimeRepositoryImp {
-            return PrayerTimeRepositoryImp(pref, prayerTime)
+        fun provideLoginRepository(prayerTimeApi: PrayerTimeApi, pref: SharedPref): PrayerTimeRepository {
+            return PrayerTimeRepositoryImp(pref, prayerTimeApi)
         }
 }

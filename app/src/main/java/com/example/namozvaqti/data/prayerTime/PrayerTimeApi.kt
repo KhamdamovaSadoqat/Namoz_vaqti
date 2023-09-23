@@ -7,11 +7,11 @@ import retrofit2.http.Query
 
 interface PrayerTimeApi {
 
-    @GET("timingsByCity")
+    @GET("timings")
     suspend fun prayerTime(
-        @Query("city") city: String,
-        @Query("country") country: String,
-        @Query("method") method: Int,
-        @Query("school") school: Int,
+        @Query("latitude") latitude: String,
+        @Query("longitude") longitude: String,
+//        @Query("method") method: Int,
+//        @Query("school") school: Int,
     ): Response<WrappedResponse<PrayerTimeResponse>>
 }
