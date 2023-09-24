@@ -1,5 +1,6 @@
 package com.example.namozvaqti.ui.prayerTime
 
+import android.util.Log
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.example.namozvaqti.data.comman.WrappedResponse
@@ -26,7 +27,9 @@ class PrayerTimeViewModel @Inject constructor(
     fun prayerTime() {
         viewModelScope.async {
             prayerTimeUseCase.prayerTime()
-                .onStart { prayerTimeState.value = PrayerTimeState.IsLoading(true) }
+                .onStart {
+                    Log.d("----------", "prayerTime: isloading")
+                    prayerTimeState.value = PrayerTimeState.IsLoading(true) }
                 .catch { exception ->
                     prayerTimeState.value = PrayerTimeState.IsLoading(false)
                     prayerTimeState.value =
@@ -38,13 +41,10 @@ class PrayerTimeViewModel @Inject constructor(
                         is BaseResult.Success -> {
                             prayerTimeState.value = PrayerTimeState.SuccessPrayerTime(result.data)
                         }
-
                         is BaseResult.Error -> {
-                            prayerTimeState.value =
-                                PrayerTimeState.ErrorPrayerTime(result.rawResponse)
+                            prayerTimeState.value = PrayerTimeState.ErrorPrayerTime(result.rawResponse)
                         }
                     }
-
                 }
         }.onAwait
     }

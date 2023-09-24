@@ -2,7 +2,6 @@ package com.example.namozvaqti.ui.prayerTime
 
 import android.app.AlertDialog
 import android.os.Bundle
-import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -68,7 +67,6 @@ class PrayerTimeFragment : BindingFragment<FragmentPrayerTimeBinding>() {
     }
 
     private fun handleStateChange(prayerTimeState: PrayerTimeState) {
-        Log.d("----------", "handleStateChange: start")
         when (prayerTimeState) {
             is PrayerTimeState.Init -> Unit
             is PrayerTimeState.ErrorPrayerTime -> {
@@ -81,12 +79,10 @@ class PrayerTimeFragment : BindingFragment<FragmentPrayerTimeBinding>() {
                 binding.root.context.showToast(prayerTimeState.message)
             }
             is PrayerTimeState.IsLoading -> {
-                Log.d("----------", "handleStateChange: Loading")
                 binding.linear.visibility = View.INVISIBLE
                 binding.pbPrayerTime.visibility = View.VISIBLE
             }
             is PrayerTimeState.SuccessPrayerTime -> {
-                Log.d("----------", "handleStateChange: Success")
                 binding.linear.visibility = View.VISIBLE
                 binding.pbPrayerTime.visibility = View.INVISIBLE
                 setPrayerTime(prayerTimeState.prayerTimeEntity)
@@ -120,7 +116,7 @@ class PrayerTimeFragment : BindingFragment<FragmentPrayerTimeBinding>() {
 
     private fun setDrawables(drawable: Int, timeName: Int, time: String){
         binding.prayerTimeIcon.setBackgroundResource(drawable)
-        binding.prayerTime.text = "$time"
+        binding.prayerTime.text = time
         binding.prayerTimeName.text = ContextCompat.getString(requireContext(), timeName)
     }
 
@@ -132,6 +128,8 @@ class PrayerTimeFragment : BindingFragment<FragmentPrayerTimeBinding>() {
             binding.tvLocation.text = sharedPref.city
             dismissCityDialog()
             viewModel.prayerTime()
+            binding.linear.visibility = View.INVISIBLE
+            binding.pbPrayerTime.visibility = View.VISIBLE
         }
         countryDialogBinding.rvCountry.adapter =cityAdapter
         cityAdapter.items = getCities()
